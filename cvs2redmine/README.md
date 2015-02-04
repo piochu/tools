@@ -1,1 +1,1 @@
-Convert CVS file to Readmine table syntax.
+Convert CVS file to Redmine table syntax.
