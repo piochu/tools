@@ -8,6 +8,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("file", help="csv file")
     parser.add_argument("-d", help="custom delimiter (by default semicolon)", default=";")
+    parser.add_argument("-n", help="disable table header", action="store_true")
+    
     args = parser.parse_args()
 
     input = args.file
@@ -21,10 +23,11 @@ def main():
     for i, line in enumerate(data):
         columns = line.split(args.d)
 
-        if i:
+        if i and not args.n:
             for item in columns:
                 print("|%s" % item.strip(), end="")
-        else:
+
+        if not i or args.n:
             for item in columns:
                 print("|_.%s" % item.strip(), end="")
         print("|")
